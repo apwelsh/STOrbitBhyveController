@@ -289,19 +289,19 @@ def webSocketStatus(String message) {
     }
     else if (message == "status: closing") {
         synchronized (socketStatusLock) {
-            log.error "Lost connection to Web Socket: ${message}, will reconnect."
+            logDebug "Lost connection to Web Socket: ${message}, will reconnect."
             setWebSocketStatus(false)
         }
     }
     else if (message.startsWith("failure:")) {
         synchronized (socketStatusLock) {
-            log.error "Lost connection to Web Socket: ${message}, will reconnect."
+            logDebug "Lost connection to Web Socket: ${message}, will reconnect."
             setWebSocketStatus(false)
         }
     }
     else {
         synchronized (socketStatusLock) {
-            log.error "Websocket status: ${message}, will reconnect."
+            logDebug "Websocket status: ${message}, will reconnect."
             setWebSocketStatus(false)
         }
     }
@@ -356,3 +356,4 @@ def logDebug(msg) {
     if (parent.isDebugLogEnabled())
         log.debug msg
 }
+
